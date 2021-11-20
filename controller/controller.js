@@ -1,6 +1,3 @@
-const fastify = require('fastify')({
-    logger: true
-  });
 
 const Blog = require('../modules/blog');
 

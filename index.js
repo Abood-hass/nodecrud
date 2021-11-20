@@ -1,26 +1,59 @@
-const fastify = require('fastify')({
-    logger: true
-  });
+// const fastify = require('fastify')({
+//   logger: true
+// });
+
+
+const express= require('express')
+const app = express();
+const route = express.Router();
+
+const swaggerJsDoc = require("swagger-jsdoc");
+
+const swaggerUi = require("swagger-ui-express");
+
 require('dotenv').config({ path: './config.env' })
 
 const {postRows, patchRows, getRows, getAllRows,  updateRow, deleteRow} = require('./controller/controller')
 
 
-fastify.post('/addNewRow',postRows);
+const swaggerOpt={
+  swaggerDefinition:{
+    info: {
+      title: 'CRUD',
+      description:'CRUD info',
+      contact: {
+        name: 'Amazing Deve'
+      },
+      servers: ['http://localhost:8080/getAllRows']
+    }
+  },
+  apis:["index.js"]
+}
+
+
+const swaggerDoc = swaggerJsDoc(swaggerOpt);
+
+app.use('./api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+
+
+
+
+
+app.post('/addNewRow',postRows);
   
 // fastify.patch('/addGorupOfNewRow',patchRows);
   
-fastify.get('/getOldRow/:author',getRows);
+app.get('/getOldRow/:author',getRows);
   
-fastify.get('/getAllRows',getAllRows);
+app.get('/getAllRows',getAllRows);
 
-fastify.put('/updateOldRow/:author',updateRow);
+app.put('/updateOldRow/:author',updateRow);
 
-fastify.delete('/deleteOldRow/:id',deleteRow);
+app.delete('/deleteOldRow/:id',deleteRow);
 
 const port = process.env.PORT;
 
-fastify.listen(port, (err, res) => {
+app.listen(port, (err, res) => {
   // res.write('view.html')
 
     if (err) {throw err}else{console.log(port)};
