@@ -56,7 +56,7 @@ app.put('/Home/updateOldRow/:author',updateRow);
 
 app.delete('/Home/deleteOldRow/:id',deleteRow);
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8080;
 
 app.listen(port, (err, res) => {
   // res.write('view.html')
