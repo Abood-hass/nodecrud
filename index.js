@@ -31,7 +31,7 @@ const {postRows, patchRows, getRows, getAllRows,  updateRow, deleteRow} = requir
 // }
 
 
-const swaggerDoc = swaggerJsDoc(swaggerOpt);
+// const swaggerDoc = swaggerJsDoc(swaggerOpt);
 
 app.use('./api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
@@ -55,7 +55,7 @@ const port = process.env.PORT;
 
 app.listen(port, (err, res) => {
   // res.write('view.html')
-
+    res.render('view');
     if (err) {throw err}else{console.log(port)};
     // Server is now listening on ${address}
   })
