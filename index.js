@@ -16,19 +16,19 @@ require('dotenv').config({ path: './config.env' })
 const {postRows, patchRows, getRows, getAllRows,  updateRow, deleteRow} = require('./controller/controller')
 
 
-const swaggerOpt={
-  swaggerDefinition:{
-    info: {
-      title: 'CRUD',
-      description:'CRUD info',
-      contact: {
-        name: 'Amazing Deve'
-      },
-      servers: ['http://localhost:8080/getAllRows']
-    }
-  },
-  apis:["index.js"]
-}
+// const swaggerOpt={
+//   swaggerDefinition:{
+//     info: {
+//       title: 'CRUD',
+//       description:'CRUD info',
+//       contact: {
+//         name: 'Amazing Deve'
+//       },
+//       servers: ['http://localhost:8080/getAllRows']
+//     }
+//   },
+//   apis:["index.js"]
+// }
 
 
 const swaggerDoc = swaggerJsDoc(swaggerOpt);
