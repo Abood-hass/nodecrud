@@ -33,29 +33,33 @@ const {postRows, patchRows, getRows, getAllRows,  updateRow, deleteRow} = requir
 
 // const swaggerDoc = swaggerJsDoc(swaggerOpt);
 
-app.use('./api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+// app.use('./api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 
 
 
 
-app.post('/addNewRow',postRows);
+app.post('/Home/addNewRow',postRows);
   
 // fastify.patch('/addGorupOfNewRow',patchRows);
   
-app.get('/getOldRow/:author',getRows);
+app.get('/Home/getOldRow/:author',getRows);
   
-app.get('/getAllRows',getAllRows);
+app.get('/Home/getAllRows',getAllRows);
 
-app.put('/updateOldRow/:author',updateRow);
+app.get('/Home',(req, res, next)=>{
+  res.sendFile(__dirname + '/Views/DB.html');
+})
 
-app.delete('/deleteOldRow/:id',deleteRow);
+
+app.put('/Home/updateOldRow/:author',updateRow);
+
+app.delete('/Home/deleteOldRow/:id',deleteRow);
 
 const port = process.env.PORT;
 
 app.listen(port, (err, res) => {
   // res.write('view.html')
-    res.render('view');
     if (err) {throw err}else{console.log(port)};
     // Server is now listening on ${address}
   })
