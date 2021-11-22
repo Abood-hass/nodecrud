@@ -21,7 +21,7 @@
     "swagger-ui-express": "^4.1.6"
   },
   "engines": {
-    "node": "0.8.28",
-    "npm": "1.2.30"
+    "node": "0.8.x",
+    "npm": "1.1.x"
   }
 }
